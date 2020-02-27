@@ -1,18 +1,55 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
       Pendientes
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-list-header>
-    Listado de Pendientes
-  </ion-list-header>
-  <ion-item-group>
-    <ion-item *ngFor="let list of _shoppingListService .lists">
-      {{ list .name }}
-    </ion-item>
-  </ion-item-group>
+<ion-content>
+
+  <ion-card *ngFor="let list of _shoppingListService .lists">
+  
+    <ion-card-header>
+      <ion-toolbar>
+        <ion-card-title>{{ list .name }}</ion-card-title>
+        <ion-buttons slot="end">
+          <ion-button size="large" color="primary">
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item-group>
+        <ion-item>
+          <ion-icon name="ellipse-outline" slot="start"></ion-icon>
+          <ion-label>1. Aliquid ex sit amet.</ion-label> 
+        </ion-item>
+        <ion-item>
+          <ion-icon name="ellipse-outline" slot="start"></ion-icon>
+          <ion-label>2. Perspiciatis ab unde impedit.</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="ellipse-outline" slot="start"></ion-icon>
+          <ion-label>3. Iste laboriosam.</ion-label>
+        </ion-item>
+      </ion-item-group>
+  
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-fab 
+    color="secondary"
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+  >
+    <ion-fab-button color="secondary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
 </ion-content>
