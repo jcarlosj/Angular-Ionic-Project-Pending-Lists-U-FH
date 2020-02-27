@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShoppingListService } from '../../services/shopping-list.service';   // Service
 
 @Component({
   selector: 'app-pendings',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PendingsPage implements OnInit {
 
-  constructor() { }
+  constructor( private _shoppingListService : ShoppingListService ) { }
 
   ngOnInit() {
   }
