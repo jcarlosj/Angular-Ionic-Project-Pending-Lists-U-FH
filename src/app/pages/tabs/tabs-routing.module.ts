@@ -14,6 +14,10 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import( '../pendings/pendings.module' ) .then( m => m .PendingsPageModule )
+          },
+          {
+            path: 'add',
+            loadChildren: () => import( '../pendings/pending-add/pending-add.module' ) .then( m => m .PendingAddPageModule )
           }
         ]
       },
