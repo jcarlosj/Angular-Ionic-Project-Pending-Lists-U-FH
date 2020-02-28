@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'pending-add',
+    loadChildren: () => import('./pages/pendings/pending-add/pending-add.module').then( m => m.PendingAddPageModule)
   }
 ];
 @NgModule({
