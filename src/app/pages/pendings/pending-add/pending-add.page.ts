@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PendingAddPage implements OnInit {
 
+  /** Atributes */
+  nameList: string;
+  nameItem: string;
+
   constructor() { }
 
   ngOnInit() {

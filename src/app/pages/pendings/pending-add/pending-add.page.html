@@ -10,5 +10,23 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-card>
+    <ion-card-header>
+      Titulo
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nombre de la lista</ion-label>
+        <ion-input type="text" name="nameList" [(ngModel)]="nameList"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Item</ion-label>
+        <ion-input type="text" name="nameItem" [(ngModel)]="nameItem"></ion-input>
+      </ion-item>
+      <ion-button id="btn-save" (click)="saveNewPlace( city, place, url )">
+        <ion-icon name="add-circle" slot="start"></ion-icon>
+        Guardar
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
