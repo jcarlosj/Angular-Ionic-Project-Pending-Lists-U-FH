@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';         // Ionic Component
 import { Item, List } from '../../../classes/Models';     // Models
+import { ShoppingListService } from '../../../services/shopping-list.service';    // Service
 
 @Component({
   selector: 'app-pending-add',
@@ -15,7 +16,10 @@ export class PendingAddPage implements OnInit {
 
   items: Item[] = [];
 
-  constructor( public _alertController: AlertController ) { }
+  constructor( 
+    public _alertController: AlertController,
+    public _shoppingListService: ShoppingListService
+  ) { }
 
   ngOnInit() {
   }
@@ -58,7 +62,7 @@ export class PendingAddPage implements OnInit {
       const alert = await this ._alertController .create({
         header: 'Atención',
         subHeader: 'Dale nombre a tu lista',
-        message: 'El nombre permite asociar cada uno de los items a una lista específica',
+        message: 'El nombre permite asociar cada uno de los items a una lista',
         buttons: ['OK']
       });
 
@@ -69,7 +73,8 @@ export class PendingAddPage implements OnInit {
     let list = new List( this .nameList );
     list .items = this .items;      // Asigna la lista de items a la lista
 
-    console .log( 'List', list );
+    /** Inserta datos al Service */
+    console .log( 'DataService', this ._shoppingListService .lists .push( list ) );
 
   }
 
