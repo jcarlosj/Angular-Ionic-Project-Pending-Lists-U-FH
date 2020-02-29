@@ -20,6 +20,7 @@ export class PendingAddPage implements OnInit {
   ngOnInit() {
   }
 
+  /** Agrega item a la lista */
   add() {
     console .log( 'Add item' );
 
@@ -35,6 +36,17 @@ export class PendingAddPage implements OnInit {
     this .nameItem = '';                      // Limpia el campo
     console .log( 'Lista', this .items );
 
+  }
+
+  /** Elimina item de la lista */
+  delete( idx: number ) {
+    console .log( 'Elimine posicion', idx );
+
+    this .items = this .items .filter( ( item, index ) => {
+      return index !== idx ? item : null ;
+    });
+
+    console .log( this .items );
   }
 
 }
