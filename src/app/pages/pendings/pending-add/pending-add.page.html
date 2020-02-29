@@ -65,7 +65,12 @@
         </ion-item>
       </ion-list>
 
-      <ion-button id="btn-add-list" class="button-block" color="secondary">
+      <ion-button 
+        id="btn-add-list" 
+        class="button-block" 
+        color="secondary"
+        (click)="saveList()"
+      >
         <ion-icon name="add-circle" slot="start"></ion-icon>
         Agrega lista
       </ion-button>
