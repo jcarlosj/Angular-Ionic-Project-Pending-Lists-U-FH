@@ -42,9 +42,7 @@ export class PendingAddPage implements OnInit {
   delete( idx: number ) {
     console .log( 'Elimine posicion', idx );
 
-    this .items = this .items .filter( ( item, index ) => {
-      return index !== idx ? item : null ;
-    });
+    this .items .splice( idx, 1 );    /** Cambia el contanido de un array eliminando elemeto/s existentes (idx: indice donde inicia, 1: cantidad de campos a eliminar) */ 
 
     console .log( this .items );
   }
