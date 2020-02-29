@@ -4,7 +4,7 @@
       <ion-back-button routerLink="/tabs/pendings" routerDirection="back"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Crea nueva lista
+      {{ nameList | placeholder:'Nueva lista' }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -23,7 +23,7 @@
         <ion-label position="floating">Item</ion-label>
         <ion-input type="text" name="nameItem" [(ngModel)]="nameItem"></ion-input>
       </ion-item>
-      <ion-button id="btn-save" (click)="saveNewPlace( city, place, url )">
+      <ion-button id="btn-save">
         <ion-icon name="add-circle" slot="start"></ion-icon>
         Guardar
       </ion-button>

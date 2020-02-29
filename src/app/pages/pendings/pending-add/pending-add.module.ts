@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { PendingAddPageRoutingModule } from './pending-add-routing.module';
+import { PlaceholderPipe } from '../../../pipes/placeholder.pipe';
 
 import { PendingAddPage } from './pending-add.page';
 
@@ -15,6 +16,6 @@ import { PendingAddPage } from './pending-add.page';
     IonicModule,
     PendingAddPageRoutingModule
   ],
-  declarations: [PendingAddPage]
+  declarations: [PendingAddPage, PlaceholderPipe]
 })
 export class PendingAddPageModule {}
