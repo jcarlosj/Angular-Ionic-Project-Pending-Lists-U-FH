@@ -18,23 +18,36 @@
             <ion-icon name="add-circle-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
+        <ion-note>
+          Cantidad {{ list .items .length }}
+        </ion-note>
       </ion-toolbar>
     </ion-card-header>
 
     <ion-card-content>
       <ion-item-group>
-        <ion-item>
-          <ion-icon name="ellipse-outline" slot="start"></ion-icon>
-          <ion-label>1. Aliquid ex sit amet.</ion-label> 
+        <ion-item *ngFor="let item of list.items | slice:0:2; let i = index;">
+          <ion-icon 
+            name="ellipse-outline" 
+            slot="start"
+            *ngIf="! item .isCompleted" 
+          ></ion-icon>
+          <ion-icon
+            name="checkmark-circle-outline" 
+            slot="start"
+            *ngIf="item .isCompleted"
+          ></ion-icon>
+          <ion-label>{{ i + 1 }}. {{ item .name }}.</ion-label> 
         </ion-item>
-        <ion-item>
-          <ion-icon name="ellipse-outline" slot="start"></ion-icon>
-          <ion-label>2. Perspiciatis ab unde impedit.</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-icon name="ellipse-outline" slot="start"></ion-icon>
-          <ion-label>3. Iste laboriosam.</ion-label>
-        </ion-item>
+
+        <ion-button 
+          class="button-block" 
+          color="light"
+          *ngIf="list .items .length > 2"
+        >
+          <ion-icon name="arrow-down-circle-outline"></ion-icon>
+        </ion-button>
+        
       </ion-item-group>
   
     </ion-card-content>
