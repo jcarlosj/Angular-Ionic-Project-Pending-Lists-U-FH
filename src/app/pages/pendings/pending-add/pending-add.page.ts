@@ -73,7 +73,7 @@ export class PendingAddPage implements OnInit {
 
     let list = new List( this .nameList );
     list .items = this .items;                          // Asigna la lista de items a la lista
-    this ._shoppingListService .lists .push( list );    // Inserta datos al Service
+    this ._shoppingListService .addList( list );        // Inserta datos al Service
     this ._navController .pop();                        // Navegar al componente inicial (actual)
 
   }

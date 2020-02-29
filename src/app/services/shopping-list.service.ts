@@ -7,10 +7,30 @@ import { List } from '../classes/List.model';       // Class Model
 export class ShoppingListService {
 
   /** Atributes */
-  lists : List[] = [];
+  lists: List[] = [];
 
   constructor() {
     console .log( 'ShoppingListService Inicializado' );
+    this .loadData();       // Carga Datos Almacenados
+  }
+
+  /** Carga Datos Almacenados */
+  loadData() {
+    /** Valida que exista un item en el localStorage con el nombre requerido */
+    if( localStorage .getItem( 'data' ) ) {
+      this .lists = JSON .parse( localStorage .getItem( 'data' ) );
+    }
+  }
+
+  /** Actualiza Datos Almacenados */
+  updateData() {
+    localStorage .setItem( 'data', JSON .stringify( this .lists ) );
+  }
+
+  /** Agrega una Lista */
+  addList( list: List ) {
+    this .lists .push( list );
+    this .updateData();
   }
 
 }
