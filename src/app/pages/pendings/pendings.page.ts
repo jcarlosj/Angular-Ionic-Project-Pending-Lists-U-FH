@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingListService } from '../../services/shopping-list.service';   // Service
-import { NavController } from '@ionic/angular';                               // Ionic Router
+import { Router } from '@angular/router';                                     // Angular Router
+
+import { PendingDetailPage } from '../pendings/pending-detail/pending-detail.page';
+import { List } from '../../classes/List.model';
 
 @Component({
   selector: 'app-pendings',
@@ -11,7 +14,7 @@ export class PendingsPage implements OnInit {
 
   constructor( 
     private _shoppingListService : ShoppingListService,
-    private _navController: NavController
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -19,7 +22,14 @@ export class PendingsPage implements OnInit {
 
   /** Redirecciona a Formulario Nueva Lista Pendiente */
   goToPendingAddPage() {
-    this ._navController .navigateForward( '/tabs/pendings/add' );
+    this ._router .navigate( [ '/tabs/pendings/add' ] );
+  }
+
+  /** Redirecciona a Pagina de Detalles */
+  goToPendingDetail( idx: number, list: List ) {
+    this ._router .navigate( [ '/tabs/pendings/detail' ], {
+      queryParams: { idx, list }
+    } );
   }
 
 }

@@ -8,9 +8,11 @@
 
 <ion-content>
 
-  <ion-card *ngFor="let list of _shoppingListService .lists">
+  <ion-card *ngFor="let list of _shoppingListService .lists; let i = index;">
   
-    <ion-card-header>
+    <ion-card-header
+      (click)="goToPendingDetail( i, list )"
+    >
       <ion-toolbar>
         <ion-card-title>{{ list .name }}</ion-card-title>
         <ion-buttons slot="end">
@@ -26,7 +28,10 @@
 
     <ion-card-content>
       <ion-item-group>
-        <ion-item *ngFor="let item of list.items | slice:0:2; let i = index;">
+        <ion-item 
+          *ngFor="let item of list.items | slice:0:2; let i = index;"
+          (click)="goToPendingDetail( i, list )"
+        >
           <ion-icon 
             name="ellipse-outline" 
             slot="start"
