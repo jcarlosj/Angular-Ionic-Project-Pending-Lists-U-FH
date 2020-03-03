@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';         // Ionic Component
+import { AlertController } from '@ionic/angular';         // Ionic Component
+import { Router } from '@angular/router';                                     // Angular Router
 import { Item, List } from '../../../classes/Models';     // Models
 import { ShoppingListService } from '../../../services/shopping-list.service';    // Service
 
@@ -19,7 +20,7 @@ export class PendingAddPage implements OnInit {
   constructor( 
     public _alertController: AlertController,
     public _shoppingListService: ShoppingListService,
-    public _navController: NavController
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -74,7 +75,7 @@ export class PendingAddPage implements OnInit {
     let list = new List( this .nameList );
     list .items = this .items;                          // Asigna la lista de items a la lista
     this ._shoppingListService .addList( list );        // Inserta datos al Service
-    this ._navController .pop();                        // Navegar al componente inicial (actual)
+    this ._router .navigate( [ '/tabs/pendings' ] );    // Navegar al componente inicial (actual)
 
   }
 
