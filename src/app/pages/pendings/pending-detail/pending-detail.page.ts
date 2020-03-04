@@ -12,7 +12,7 @@ export class PendingDetailPage implements OnInit {
 
   /** Atributes */
   id: number;
-  list: any;
+  list: List;
 
   constructor( 
     private _activatedRoute: ActivatedRoute,
@@ -29,6 +29,13 @@ export class PendingDetailPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  /** Actualiza estado Completado de la lista */
+  updateStatusCompleted( idItem: number ) {
+    this .list .items[ idItem ] .isCompleted = ! this .list .items[ idItem ] .isCompleted;
+    console .log( 'idItem', this .list .items[ idItem ] );
+    this ._shoppingListService .updateData();
   }
 
 }

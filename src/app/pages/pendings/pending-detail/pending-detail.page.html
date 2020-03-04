@@ -8,7 +8,6 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
 
   <ion-card>
@@ -24,7 +23,10 @@
     <ion-card-content>
 
       <ion-list>
-        <ion-item *ngFor="let item of list .items; let i = index;">
+        <ion-item 
+          *ngFor="let item of list .items; let i = index;"
+          (click)="updateStatusCompleted( i )"
+        >
           <ion-icon 
           name="ellipse-outline" 
           slot="start"
@@ -35,7 +37,7 @@
           slot="start"
           *ngIf="item .isCompleted"
         ></ion-icon>
-        <ion-label>{{ i + 1 }}. {{ item .name }}.</ion-label> 
+        <ion-label [class.cross-out-text]="item.isCompleted">{{ i + 1 }}. {{ item .name }}</ion-label> 
         </ion-item>
       </ion-list>
 

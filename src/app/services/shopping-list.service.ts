@@ -33,6 +33,7 @@ export class ShoppingListService {
     this .updateData();
   }
 
+  /** Obtiene una Lista */
   getListItem( id: number ) : List {
     return this .lists[ id ];
   }

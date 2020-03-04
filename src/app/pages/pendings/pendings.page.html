@@ -42,7 +42,7 @@
             slot="start"
             *ngIf="item .isCompleted"
           ></ion-icon>
-          <ion-label>{{ j + 1 }}. {{ item .name }}.</ion-label> 
+          <ion-label [class.cross-out-text]="item.isCompleted">{{ j + 1 }}. {{ item .name }}.</ion-label> 
         </ion-item>
 
         <ion-button 
