@@ -31,7 +31,13 @@ export class PendingAddPage implements OnInit {
 
     /** Valida que los campos NO vengan vacios */
     if( this .nameItem .length <= 0 ) {
-      console .log( 'Campo nombre del item vacio' );
+      const msg = {
+        header: 'Atención',
+        subHeader: 'Dale nombre a tu item',
+        message: 'El item es la referencia a un pendiente para agregar a la lista'
+      }
+      this .alertWindow( msg );
+
       return;
     }
 
@@ -61,14 +67,13 @@ export class PendingAddPage implements OnInit {
     if( this .nameList .length <= 0 ) {
       console .log( 'Campo nombre de la lista vacio' );
 
-      const alert = await this ._alertController .create({
+      const msg = {
         header: 'Atención',
         subHeader: 'Dale nombre a tu lista',
-        message: 'El nombre permite asociar cada uno de los items a una lista',
-        buttons: ['OK']
-      });
+        message: 'El nombre permite asociar cada uno de los items a una lista'
+      };
+      this .alertWindow( msg );
 
-      await alert.present();
       return;
     }
 
@@ -77,6 +82,20 @@ export class PendingAddPage implements OnInit {
     this ._shoppingListService .addList( list );        // Inserta datos al Service
     this ._router .navigate( [ '/tabs/pendings' ] );    // Navegar al componente inicial (actual)
 
+  }
+
+  /** Ventana Emergente 'AlertController' de Ionic */
+  async alertWindow( msg ) {
+    const
+      { header, subHeader, message } = msg,
+      alert = await this ._alertController .create({
+        header,
+        subHeader,
+        message,
+        buttons: ['OK']
+      });
+
+    await alert.present();
   }
 
 }
