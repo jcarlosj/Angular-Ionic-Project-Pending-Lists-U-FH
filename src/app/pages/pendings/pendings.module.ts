@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
 import { PendingsPage } from './pendings.page';
+import { PendingsPipe } from '../../pipes/pendings.pipe';
 
 @NgModule({
   imports: [
@@ -15,6 +16,9 @@ import { PendingsPage } from './pendings.page';
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: PendingsPage }])
   ],
-  declarations: [PendingsPage]
+  declarations: [
+    PendingsPage,
+    PendingsPipe
+  ]
 })
 export class PendingsPageModule {}

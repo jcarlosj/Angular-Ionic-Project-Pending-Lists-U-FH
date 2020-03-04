@@ -8,7 +8,7 @@
 
 <ion-content>
 
-  <ion-card *ngFor="let list of _shoppingListService .lists; let i = index;">
+  <ion-card *ngFor="let list of _shoppingListService .lists | pendings; let i = index;">
   
     <ion-card-header
       (click)="goToPendingDetail( i )"
