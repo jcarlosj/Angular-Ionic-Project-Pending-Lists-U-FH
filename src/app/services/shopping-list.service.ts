@@ -33,4 +33,8 @@ export class ShoppingListService {
     this .updateData();
   }
 
+  getListItem( id: number ) : List {
+    return this .lists[ id ];
+  }
+
 }

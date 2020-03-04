@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';         // Angular Router
-import { List } from '../../../classes/List.model';       // Model
+import { ShoppingListService } from '../../../services/shopping-list.service';   // Service
+import { List } from '../../../classes/List.model';
 
 @Component({
   selector: 'app-pending-detail',
@@ -11,15 +12,18 @@ export class PendingDetailPage implements OnInit {
 
   /** Atributes */
   id: number;
-  list: List;
+  list: any;
 
-  constructor( private _activatedRoute: ActivatedRoute ) {
+  constructor( 
+    private _activatedRoute: ActivatedRoute,
+    private _shoppingListService: ShoppingListService
+  ) {
 
-    this ._activatedRoute .queryParams .subscribe( params => {
+    this ._activatedRoute .params .subscribe( params => {
       console .log( 'params', params );
-
-      this .id = Number( params[ 'idx' ] );
-      this .list = JSON .parse( params[ 'list' ] );
+      this .id = Number( params[ 'id' ] );
+      this .list = this ._shoppingListService .getListItem( this .id );
+      console .log( 'List', this .list );
     });
 
   }

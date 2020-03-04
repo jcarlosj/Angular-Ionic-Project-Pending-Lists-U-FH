@@ -26,10 +26,9 @@ export class PendingsPage implements OnInit {
   }
 
   /** Redirecciona a Pagina de Detalles */
-  goToPendingDetail( idx: number, list: List ) {
-    this ._router .navigate( [ '/tabs/pendings/detail' ], {
-      queryParams: { id: idx, list: JSON .stringify( list ) }
-    } );
+  goToPendingDetail( idx: number ) {
+    console .log( 'pendings', idx );
+    this ._router .navigate( [ '/tabs/pendings/detail', idx ] );
   }
 
 }
