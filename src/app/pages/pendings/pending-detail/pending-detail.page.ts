@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';         // Angular Router
+import { ActivatedRoute, Router } from '@angular/router';         // Angular Router
 import { ShoppingListService } from '../../../services/shopping-list.service';   // Service
-import { List } from '../../../classes/List.model';
+import { List } from '../../../classes/List.model';       // Model
+import { AlertController } from '@ionic/angular';         // Ionic Element
 
 @Component({
   selector: 'app-pending-detail',
@@ -16,7 +17,9 @@ export class PendingDetailPage implements OnInit {
 
   constructor( 
     private _activatedRoute: ActivatedRoute,
-    private _shoppingListService: ShoppingListService
+    private _shoppingListService: ShoppingListService,
+    public _alertController: AlertController,
+    private _router: Router
   ) {
 
     this ._activatedRoute .params .subscribe( params => {
@@ -33,9 +36,45 @@ export class PendingDetailPage implements OnInit {
 
   /** Actualiza estado Completado de la lista */
   updateStatusCompleted( idItem: number ) {
-    this .list .items[ idItem ] .isCompleted = ! this .list .items[ idItem ] .isCompleted;
-    console .log( 'idItem', this .list .items[ idItem ] );
-    this ._shoppingListService .updateData();
+    this .list .items[ idItem ] .isCompleted = ! this .list .items[ idItem ] .isCompleted;    // Cambia estado del Item
+    this .list .isCompleted = this .areCompleted();     // Cambia estado de la Lista
+    this ._shoppingListService .updateData();           // Actualiza los cambios
+  }
+
+  areCompleted() {
+    let allCompleted = true;
+
+    for( let item of this .list .items ) {
+      if( ! item .isCompleted ) {
+        allCompleted = false;
+        break;
+      }
+    }
+
+    return allCompleted;
+  }
+
+  /** Elimina una lista */
+  async deleteList() {
+    console .log( 'Delete List' );
+
+    const alert = await this ._alertController.create({
+      header: `Eliminar ${ this .list .name }`,
+      message: '¿Seguro deseas <strong>eliminar</strong> la lista?',
+      buttons: [ 
+        'Cancelar',
+        {
+          text: 'Si, Eliminar',
+          handler: () => {
+            this ._shoppingListService .deleteList( this .id );   /** Elimina */
+            this ._router .navigate( [ '/tabs/pendings' ] );      /** Redirecciona */
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+
   }
 
 }

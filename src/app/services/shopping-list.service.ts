@@ -38,4 +38,10 @@ export class ShoppingListService {
     return this .lists[ id ];
   }
 
+  /** Elimina una Lista */
+  deleteList( id: number ) {
+    this .lists .splice( id, 1 );
+    this .updateData();
+  }
+
 }
