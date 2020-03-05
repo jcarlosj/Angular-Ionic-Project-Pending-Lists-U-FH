@@ -24,7 +24,7 @@ export class PendingsPage implements OnInit {
 
   /** Redirecciona a Pagina de Detalles */
   goToPendingDetail( idx: number ) {
-    console .log( 'pendings', idx );
+    console .log( 'pendings id', idx );
     this ._router .navigate( [ '/tabs/pendings/detail', idx ] );
   }
 

@@ -11,7 +11,7 @@
   <ion-card *ngFor="let list of _shoppingListService .lists | pendings; let i = index;">
   
     <ion-card-header
-      (click)="goToPendingDetail( i )"
+      (click)="goToPendingDetail( list.id )"
     >
       <ion-toolbar>
         <ion-card-title>{{ list .name }}</ion-card-title>
@@ -30,7 +30,7 @@
       <ion-item-group>
         <ion-item 
           *ngFor="let item of list.items | slice:0:2; let j = index;"
-          (click)="goToPendingDetail( i )"
+          (click)="goToPendingDetail( list.id )"
         >
           <ion-icon 
             name="ellipse-outline" 

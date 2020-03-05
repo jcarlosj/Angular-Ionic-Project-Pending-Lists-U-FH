@@ -26,7 +26,7 @@ export class PendingDetailPage implements OnInit {
       console .log( 'params', params );
       this .id = Number( params[ 'id' ] );
       this .list = this ._shoppingListService .getListItem( this .id );
-      console .log( 'List', this .list );
+
     });
 
   }
@@ -36,9 +36,10 @@ export class PendingDetailPage implements OnInit {
 
   /** Actualiza estado Completado de la lista */
   updateStatusCompleted( idItem: number ) {
-    this .list .items[ idItem ] .isCompleted = ! this .list .items[ idItem ] .isCompleted;    // Cambia estado del Item
-    this .list .isCompleted = this .areCompleted();     // Cambia estado de la Lista
-    this ._shoppingListService .updateData();           // Actualiza los cambios
+    this .list .items[ idItem ] .isCompleted = ! this .list .items[ idItem ] .isCompleted;  // Cambia estado del Item
+    this .list .isCompleted = this .areCompleted();       // Cambia estado de la Lista
+    this ._shoppingListService .updateData();             // Actualiza los cambios
+
   }
 
   areCompleted() {
@@ -56,17 +57,17 @@ export class PendingDetailPage implements OnInit {
 
   /** Elimina una lista */
   async deleteList() {
-    console .log( 'Delete List' );
+    console .log( 'Delete List', this .list .id );
 
     const alert = await this ._alertController.create({
       header: `Eliminar ${ this .list .name }`,
       message: '¿Seguro deseas <strong>eliminar</strong> la lista?',
-      buttons: [ 
+      buttons: [
         'Cancelar',
         {
           text: 'Si, Eliminar',
           handler: () => {
-            this ._shoppingListService .deleteList( this .id );   /** Elimina */
+            this ._shoppingListService .deleteList( this .list .id );   /** Elimina */
             this ._router .navigate( [ '/tabs/pendings' ] );      /** Redirecciona */
           }
         }

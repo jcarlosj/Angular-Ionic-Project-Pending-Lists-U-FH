@@ -34,14 +34,23 @@ export class ShoppingListService {
   }
 
   /** Obtiene una Lista */
-  getListItem( id: number ) : List {
-    return this .lists[ id ];
+  getListItem( id: number ): List {
+    const list = this .lists .filter( list => list .id === id );
+    return list[ 0 ];
   }
 
   /** Elimina una Lista */
   deleteList( id: number ) {
-    this .lists .splice( id, 1 );
+
+    this .lists = this .lists .filter( list => {
+      if( list .id !== id ) {
+        return list;
+      }
+    });
+
+    console .log( this .lists );
     this .updateData();
+
   }
 
 }
