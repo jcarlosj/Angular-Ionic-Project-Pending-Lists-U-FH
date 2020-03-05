@@ -10,7 +10,7 @@ import { Router } from '@angular/router';                                     //
 export class FinishedPage implements OnInit {
 
   constructor( 
-    private _shoppingListService : ShoppingListService,
+    public _shoppingListService : ShoppingListService,
     private _router: Router
   ) { }
 
