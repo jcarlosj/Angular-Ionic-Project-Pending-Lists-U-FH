@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ShoppingListService } from '../../services/shopping-list.service';   // Service
 import { Router } from '@angular/router';                                     // Angular Router
 
-import { PendingDetailPage } from '../pendings/pending-detail/pending-detail.page';
-import { List } from '../../classes/List.model';
-
 @Component({
   selector: 'app-pendings',
   templateUrl: './pendings.page.html',

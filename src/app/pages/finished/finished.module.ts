@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
 import { FinishedPage } from './finished.page';
+import { SharedModule } from '../../shared/shared.module';    // Modulo que comparte el uso del PendingPipe
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { FinishedPage } from './finished.page';
     FormsModule,
     IonicModule,
     ExploreContainerComponentModule,
-    RouterModule.forChild([{ path: '', component: FinishedPage }])
+    RouterModule.forChild([{ path: '', component: FinishedPage }]),
+    SharedModule
   ],
   declarations: [FinishedPage]
 })

@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
 import { PendingsPage } from './pendings.page';
-import { PendingsPipe } from '../../pipes/pendings.pipe';
+import { SharedModule } from '../../shared/shared.module';    // Modulo que comparte el uso del PendingPipe
 
 @NgModule({
   imports: [
@@ -14,11 +14,11 @@ import { PendingsPipe } from '../../pipes/pendings.pipe';
     FormsModule,
     IonicModule,
     ExploreContainerComponentModule,
-    RouterModule.forChild([{ path: '', component: PendingsPage }])
+    RouterModule.forChild([{ path: '', component: PendingsPage }]),
+    SharedModule
   ],
   declarations: [
-    PendingsPage,
-    PendingsPipe
+    PendingsPage
   ]
 })
 export class PendingsPageModule {}
