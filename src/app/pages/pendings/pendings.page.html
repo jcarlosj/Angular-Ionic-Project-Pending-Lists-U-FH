@@ -7,6 +7,14 @@
 </ion-header>
 
 <ion-content>
+  <ion-grid *ngIf="( _shoppingListService .lists | pendings ) .length <= 0">
+    <ion-row>
+      <ion-col class="no-pending-lists text-center">
+        <ion-icon class="pendings-icon" name="file-tray-stacked-outline"></ion-icon>
+        <p>No hay listas de tareas <strong>pendientes</strong></p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-card *ngFor="let list of _shoppingListService .lists | pendings; let i = index;">
   
